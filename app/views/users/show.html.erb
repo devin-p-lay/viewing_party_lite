@@ -1,1 +1,5 @@
 <h1><%=@user.name%>'s Dashboard</h1>
+
+<section id="discover_movies">
+<%= button_to "Discover Movies", "/users/#{@user.id}/discover", method: :get %>
+</section>
