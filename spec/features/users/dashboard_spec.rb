@@ -16,7 +16,20 @@ RSpec.describe 'users dashboard' do
   end
 
   it 'displays a button that links to Discover Movies' do
+    visit user_dashboard_path(@user_1)
 
+    within("#discover_movies") do
+      expect(page).to have_button("Discover Movies")
+      click_on "Discover Movies"
+      expect(current_path).to eq("/users/#{@user_1.id}/discover")
+    end
+
+    visit user_dashboard_path(@user_2)
+    within("#discover_movies") do
+      expect(page).to have_button("Discover Movies")
+      click_on "Discover Movies"
+      expect(current_path).to eq("/users/#{@user_2.id}/discover")
+    end 
   end
 
   it 'provides a section where any viewing parties are listed' do
