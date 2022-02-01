@@ -4,7 +4,7 @@ RSpec.describe 'users dashboard' do
 
   before :each do
     @user_1 = User.create!(name: "Bob Barker", email: "BobBarker@example.com")
-    @user_2 = User.create!(name: "Jeff Lebowksi", email: "TheDude@example.com")
+    @user_2 = User.create!(name: "Jeff Lebowski", email: "TheDude@example.com")
   end
 
   it 'dsplays the users name at the top of the page' do
