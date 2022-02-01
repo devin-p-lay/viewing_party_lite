@@ -29,7 +29,7 @@ RSpec.describe 'users dashboard' do
       expect(page).to have_button("Discover Movies")
       click_on "Discover Movies"
       expect(current_path).to eq("/users/#{@user_2.id}/discover")
-    end 
+    end
   end
 
   it 'provides a section where any viewing parties are listed' do
