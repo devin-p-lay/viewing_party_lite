@@ -1,0 +1,15 @@
+<h1><%=@user.name%>'s Dashboard</h1>
+
+<section id="discover_movies">
+<%= button_to "Discover Movies", "/users/#{@user.id}/discover", method: :get %>
+</section>
+
+<h3>It's Party Time!</h3>
+<% @user.parties.each do |party| %>
+<section id="party_time_<%=party.id%>">
+  <h4>Movie: <%=party.movie_title%> </h4>
+  <p>Runtime: <%=party.movie_runtime%></p>
+  <p>Date: <%=party.date%> </p>
+  <p>Start time: <%=party.start_time%> </p>
+</section>
+<%end%>

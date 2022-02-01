@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    @user = User.find(params[:user_id])
+  end
 
   def new
     @user = User.new
@@ -17,6 +19,10 @@ class UsersController < ApplicationController
       flash[:error] = 'Unable to register, please try again.'
       redirect_to register_path
     end
+  end
+
+  def discover
+    @user = User.find(params[:user_id])
   end
 
   private
