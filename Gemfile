@@ -47,11 +47,13 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'rspec-rails'
+  gem 'simplecov'
   gem 'capybara'
   gem 'launchy'
-  gem 'simplecov'
   gem 'faraday'
+  gem 'orderly'
 end
 
 
