@@ -54,7 +54,9 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'faraday'
+  gem 'webmock'
   gem 'orderly'
+  gem 'vcr'
 end
 
 
