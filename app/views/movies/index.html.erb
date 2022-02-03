@@ -1,4 +1,5 @@
-<% @movie.top_40_movies.each do |movie| %>
-<%= movie.title %>
-<%= movie.vote_average %>
+<% @movie.each do |movie| %>
+<p><%= movie.title %></p>
+<p><%= movie.vote_average %></p>
+<br>
 <%end%>
