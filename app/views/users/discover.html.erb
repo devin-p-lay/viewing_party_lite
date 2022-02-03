@@ -1,9 +1,8 @@
-<h1><%= @user.name %>'s Movie Page</h1>
+<center><h2>Discover Movies</h2></center>
 
-<%= button_to "Top Rated Movies",  "/users/#{@user.id}/movies?q=top%20rated", method: :get%>
-
-<%= form_with url: "/users/#{@user.id}/movies", method: :get, local: true do |f| %>
-  <%= f.label 'Search by Title' %>
-  <%= f.text_field :search, label: "Search by Title", placeholder: 'ex: Sing Street' %>
+<center><%= button_to "Find Top Rated Movies",  "/users/#{@user.id}/movies?q=top%20rated", method: :get%></center>
+<center><h5>OR</h5></center>
+<center><%= form_with url: "/users/#{@user.id}/movies", method: :get, local: true do |f| %>
+  <%= f.text_field :search, placeholder: 'Search by movie title' %>
   <%= f.submit "Find Movies" %>
-<% end %>
+<% end %></center>

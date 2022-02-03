@@ -9,7 +9,7 @@ describe 'Discover Page', type: :feature do
   describe 'display' do
     it 'Top Rated button' do
       VCR.use_cassette('tmdb_top_rated_movies_1&2') do
-        click_button 'Top Rated Movies'
+        click_button 'Find Top Rated Movies'
         expect(current_path).to eq(user_movies_path(@user2))
       end
     end

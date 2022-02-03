@@ -1,10 +1,12 @@
-<h1><%=@user.name%>'s Dashboard</h1>
+<center><h2><%=@user.name%>'s Dashboard</h2></center>
 
-<section id="discover_movies">
+<center><section id="discover_movies">
 <%= button_to "Discover Movies", "/users/#{@user.id}/discover", method: :get %>
-</section>
+</section></center>
 
-<h3>It's Party Time!</h3>
+<center><h3>It's Party Time!</h3></center>
+<hr>
+<center><h4>Viewing Parties</h4>
 <% @user.parties.each do |party| %>
 <section id="party_time_<%=party.id%>">
   <h4>Movie: <%=party.movie_title%> </h4>
