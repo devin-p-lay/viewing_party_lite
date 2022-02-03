@@ -1,11 +1,11 @@
 class MoviesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+    movie = MovieFacade.new
     if params[:search]
-      movie = MovieFacade.new
       @movie = movie.movie_search(params[:search])
     else
-      @movie = MovieFacade.new
+      @movie= movie.top_40_movies
     end
   end
 end
