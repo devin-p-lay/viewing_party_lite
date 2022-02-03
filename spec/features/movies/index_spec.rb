@@ -32,8 +32,24 @@ describe 'Movie Index / Search Results Page' do
           expect(current_path).to eq(user_movies_path(@user2))
           within "#movie-634649" do
             expect(page).to have_content("Spider-Man: No Way Home")
-          end 
+          end
         end
+      end
+
+      it 'can return message if search left blank', :vcr do
+        visit user_discover_path(@user2)
+        fill_in :search, with: ''
+        click_on 'Find Movies'
+        expect(current_path).to eq(user_movies_path(@user2))
+        expect(page).to have_content("No results found.")
+      end
+
+      it 'can return message if search results empty', :vcr do
+        visit user_discover_path(@user2)
+        fill_in :search, with: 'asdf'
+        click_on 'Find Movies'
+        expect(current_path).to eq(user_movies_path(@user2))
+        expect(page).to have_content("No results found.")
       end
     end
   end

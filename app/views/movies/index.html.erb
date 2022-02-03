@@ -3,7 +3,7 @@
 
 <hr>
 
-<% if @movie.nil? %>
+<% if @movie.nil? || @movie.empty? %>
   <center><p>No results found.</p></center>
   <% else @movie.each do |movie| %>
     <div id="movie-<%= movie.id %>">
