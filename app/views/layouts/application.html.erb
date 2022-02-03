@@ -11,6 +11,7 @@
 
   <body>
     <%= link_to 'Home', '/' %>
+    <center><h1>Viewing Party Lite</h1></center>
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
     <% end %>

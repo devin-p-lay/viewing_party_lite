@@ -1,5 +1,13 @@
-<% @movie.each do |movie| %>
-<p><%= movie.title %></p>
-<p><%= movie.vote_average %></p>
-<br>
-<%end%>
+<center><h2>Search Results</h2></center>
+<center><%= link_to 'Discover Page', user_discover_path, method: :get %></center>
+
+<hr>
+
+<% if @movie.nil? || @movie.empty? %>
+  <center><p>No results found.</p></center>
+  <% else @movie.each do |movie| %>
+    <div id="movie-<%= movie.id %>">
+      <p>Vote average: <%= movie.vote_average %> -- <%= link_to movie.title, user_movie_path(@user, movie.id) %></p></div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,4 @@
+issues:
+
+- Heroku deployment successful but app is broken
+- (movies index) Button to 'Discover' uses post verb despite setting 'method: :get'  
