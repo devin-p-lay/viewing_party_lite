@@ -37,6 +37,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
+  gem 'figaro'
 end
 
 group :development do
@@ -53,7 +54,9 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'faraday'
+  gem 'webmock'
   gem 'orderly'
+  gem 'vcr'
 end
 
 
