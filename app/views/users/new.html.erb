@@ -1,12 +1,11 @@
-<h1>Viewing Party Lite</h1>
-<h3>Register a New User</h3>
+<center><h3>Register a New User</h3></center>
 
-<%= form_with url: "/users/#{@user.id}", method: :post, local: true do |f| %>
-  <%= f.label 'Name:' %>
-  <%= f.text_field :name %>
+<center><%= form_with url: "/users/#{@user.id}", method: :post, local: true do |f| %>
+  <p><%= f.label 'Name:' %>
+  <%= f.text_field :name %></p>
 
-  <%= f.label 'Email:' %>
-  <%= f.text_field :email %>"
+  <p><%= f.label 'Email:' %>
+  <%= f.text_field :email %></p>
 
   <%= f.submit 'Create New User' %>
-<% end %>
+<% end %></center>
