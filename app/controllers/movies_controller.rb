@@ -12,12 +12,8 @@ class MoviesController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @user = User.find(params[:user_id])
     movie = MovieFacade.new
-    @movie = movie.find_film(params[:movie_id])
+    @movie = movie.find_film(params[:id])
   end
-=======
-  end 
->>>>>>> e1740152cca8cecf94e585b7e2fe1dd3f462075f
 end
