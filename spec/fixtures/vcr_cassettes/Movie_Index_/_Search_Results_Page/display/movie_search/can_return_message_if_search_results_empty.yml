@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.themoviedb.org/3/search/movie?api_key=fake_api_key&en-US&page=1&query=asdf
+    uri: https://api.themoviedb.org/3/search/movie?api_key=<fake_api_key>&en-US&page=1&query=asdf
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v2.1.0
+      - Faraday v2.2.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -25,7 +25,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Thu, 03 Feb 2022 21:43:52 GMT
+      - Fri, 04 Feb 2022 18:34:52 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -40,26 +40,28 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 48ea53c7edffa2cdbdc32f7d94966344.cloudfront.net (CloudFront)
+      - 1.1 e158a5cd644f102abc630a9f56b59d78.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - 9KWGVK5xYRsxbcllC0rOw_SHjzlG0Ypz262TkEPBgJSGiFlJk7wUJA==
+      - CCaXUSt7NFXCB6jAo8HUQL14DmLcA5_CUBwZ2fG7q1yzvNITnwYdnA==
+      Age:
+      - '462'
     body:
       encoding: ASCII-8BIT
       string: '{"page":1,"results":[],"total_pages":0,"total_results":0}'
-  recorded_at: Thu, 03 Feb 2022 21:43:52 GMT
+  recorded_at: Fri, 04 Feb 2022 18:42:34 GMT
 - request:
     method: get
-    uri: https://api.themoviedb.org/3/search/movie?api_key=fake_api_key&en-US&page=2&query=asdf
+    uri: https://api.themoviedb.org/3/search/movie?api_key=<fake_api_key>&en-US&page=2&query=asdf
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v2.1.0
+      - Faraday v2.2.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -76,7 +78,7 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Thu, 03 Feb 2022 21:43:52 GMT
+      - Fri, 04 Feb 2022 18:34:52 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -91,15 +93,17 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Miss from cloudfront
+      - Hit from cloudfront
       Via:
-      - 1.1 f0b290c4e2273a7586bc6f080031d9bc.cloudfront.net (CloudFront)
+      - 1.1 94bd5e4f47540501369a53d4ae35d3b2.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN50-C2
       X-Amz-Cf-Id:
-      - 7oMGoyfTryel3epKp0u3h5INrIis9hKP2HCkHxYNqWL2b9hSWwvitw==
+      - lhBOH4qCf2cnqcsiPmgKO0YnEsXdpZedqsRIi1OG7mFB-NcOyeX3sw==
+      Age:
+      - '462'
     body:
       encoding: ASCII-8BIT
       string: '{"page":2,"results":[],"total_pages":0,"total_results":0}'
-  recorded_at: Thu, 03 Feb 2022 21:43:52 GMT
+  recorded_at: Fri, 04 Feb 2022 18:42:34 GMT
 recorded_with: VCR 6.0.0
