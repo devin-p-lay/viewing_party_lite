@@ -5,22 +5,28 @@
   <h3>Details:</h3>
   <p>Vote Average: <%=movie.vote_average%>/10</p>
   <p>Runtime: <%=movie.runtime[0]%>hrs<%=movie.runtime[(2..3)]%>min</p>
+  <br>
   <h4>Genres:<h4>
   <% movie.genres.each do |genre| %>
     <p><%=genre%></p>
   <%end%>
+  <br>
   <p>Summary: <%=movie.summary%></p>
-  <h4>Cast</h4>
+  <br>
+  <h3>Cast</h3>
   <% movie.cast.each do |crew| %>
     <p>Name: <%=crew[:name]%></p>
     <p>Character: <%=crew[:character]%></p>
+    <p>-----</p>
   <%end%>
+  <br>
   <section id="review_info">
     <h4>Reviews</h4>
     <p>Count of Reviews: <%=movie.count_of_reviews%></p>
     <% movie.review_author_details.each do |review| %>
       <p>Username: <%=review[:username]%></p>
       <p>Rating: <%=review[:rating]%>/10</p>
+      <p>-----</p>
     <%end%>
   </section>
 <%end%>
