@@ -15,27 +15,11 @@ class MovieDetails
     @title = data[:title]
     @vote_average = data[:vote_average]
     @runtime = (data[:runtime])
-    @genres = if data[:genres].nil?
-      []
-    else
-      data[:genres].map {|genre| genre[:name]}
-    end
+    @genres = data[:genres].map {|genre| genre[:name]}
     @summary = data[:overview]
-    @cast = if data[:credits].nil?
-      []
-    else
-      data[:credits][:cast][(1..10)]
-    end
-    @count_of_reviews = if data[:reviews].nil?
-      []
-    else
-      data[:reviews][:total_results]
-    end
-    @review_author_details = if data[:reviews].nil?
-      []
-    else
-      data[:reviews][:results].map {|author| author[:author_details]}
-    end
+    @cast = data[:credits][:cast][(1..10)]
+    @count_of_reviews = data[:reviews][:total_results]
+    @review_author_details = data[:reviews][:results].map {|author| author[:author_details]}
     @poster = ''
   end
 
