@@ -1,9 +1,9 @@
 <%# just so we know, 'movie' here is actually a 'movie_details' -is there a way to combine so it's actually just 'movie'? %>
 <%@movie.each do |movie|%>
-  <h1><%=movie.title%></h1>
+  <center><h2><%=movie.title%></h2></center>
 
-  <%= button_to "Return to Discover Page", "/users/#{@user.id}/discover", method: :get %>
-  <%= button_to "Create Viewing Party!", "/users/#{@user.id}/movies/#{movie.id}/parties/new", method: :get %>
+  <center><%= button_to "Return to Discover Page", "/users/#{@user.id}/discover", method: :get %></center>
+  <center><%= button_to "Create Viewing Party!", "/users/#{@user.id}/movies/#{movie.id}/parties/new", method: :get %></center>
 
   <h3>Details:</h3>
   <p>Vote Average: <%=movie.vote_average%>/10</p>
@@ -11,25 +11,27 @@
   <br>
   <h4>Genre(s):</h4>
   <% movie.genres.each do |genre| %>
-    <p><%=genre%></p>
+    <%=genre%>
   <%end%>
+  <br>
+  <br>
   <br>
   <p>Summary: <%=movie.summary%></p>
   <br>
   <h3>Cast</h3>
   <% movie.cast.each do |crew| %>
-    <p>Name: <%=crew[:name]%></p>
-    <p>Character: <%=crew[:character]%></p>
     <p>-----</p>
+    <p>Actor: <%=crew[:name]%></p>
+    <p>Character: <%=crew[:character]%></p>
   <%end%>
   <br>
   <section id="review_info">
     <h4>Reviews</h4>
     <p>Count of Reviews: <%=movie.count_of_reviews%></p>
     <% movie.review_author_details.each do |review| %>
+      <p>-----</p>
       <p>Username: <%=review[:username]%></p>
       <p>Rating: <%=review[:rating]%>/10</p>
-      <p>-----</p>
     <%end%>
   </section>
 <%end%>
