@@ -21,7 +21,7 @@
         <p><%=user.name%></p>
       <%end%>
     </section>
-  <% else %>
+  <% else party.host_id != @user.id %>
     <h4>Parties I've Been Invited To</h4>
     <section id="party_time_guest_<%=party.id%>">
     <h4>Film: <%=link_to "#{find_film(party.movie_id).first.title}", "/users/#{@user.id}/movies/#{party.movie_id}" %> </h4>
