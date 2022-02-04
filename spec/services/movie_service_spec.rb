@@ -23,6 +23,27 @@ RSpec.describe MovieService do
       end
     end
 
+    context ".search_movies" do
+      it 'returns movie data' do
+        VCR.use_cassette('tmdb_search_movies') do
+          movie = MovieService.new
+          movies = movie.search_movies("shawshank")
+
+          expect(movies).to be_a(Array)
+          movie_data = movies.first
+
+          expect(movie_data).to have_key(:original_title)
+          expect(movie_data[:original_title]).to be_a(String)
+
+          expect(movie_data).to have_key(:vote_average)
+          expect(movie_data[:vote_average]).to be_a(Float)
+
+          expect(movie_data).to have_key(:id)
+          expect(movie_data[:id]).to be_a(Integer)
+        end
+      end
+    end
+
     describe '.find_film' do
       it 'returns one movie by id' do
         VCR.use_cassette('tmdb_movie_details_with_credits_reviews') do
