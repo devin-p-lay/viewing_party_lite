@@ -16,7 +16,7 @@ RSpec.describe 'users dashboard' do
     expect(page).to have_content("Jeff Lebowski's Dashboard")
   end
 
-  xit 'displays a button that links to Discover Movies' do
+  it 'displays a button that links to Discover Movies' do
     visit user_dashboard_path(@user_1)
 
     within("#discover_movies") do
@@ -109,6 +109,19 @@ RSpec.describe 'users dashboard' do
           end
         end
       end
+    end
+  end
+
+  it 'links to a movies show page', :vcr do
+    party_1 = Party.create!(host_id: @user_1.id, movie_id: 278, length: 142, start_time: "19:00:00", date:  Date.new(2022,04,04))
+    Attendee.create!(user: @user_1, party: party_1)
+
+    visit user_dashboard_path(@user_1)
+
+    within("#party_time_host_#{party_1.id}") do
+      expect(page).to have_link("The Shawshank Redemption")
+      click_on "The Shawshank Redemption"
+      expect(current_path).to eq("/users/#{@user_1.id}/movies/#{party_1.movie_id}")
     end
   end
 end
