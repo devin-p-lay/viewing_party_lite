@@ -1,12 +1,15 @@
-<%= button_to "Return to Discover Page", "/users/#{@user.id}/discover", method: :get %>
+<%# just so we know, 'movie' here is actually a 'movie_details' -is there a way to combine so it's actually just 'movie'? %>
 <%@movie.each do |movie|%>
   <h1><%=movie.title%></h1>
 
+  <%= button_to "Return to Discover Page", "/users/#{@user.id}/discover", method: :get %>
+  <%= button_to "Create Viewing Party!", "/users/#{@user.id}/movies/#{movie.id}/parties/new", method: :get %>
+
   <h3>Details:</h3>
   <p>Vote Average: <%=movie.vote_average%>/10</p>
-  <p>Runtime: <%=movie.runtime[0]%>hrs<%=movie.runtime[(2..3)]%>min</p>
+  <p>Runtime: <%=movie.formatted_time%></p>
   <br>
-  <h4>Genres:<h4>
+  <h4>Genre(s):</h4>
   <% movie.genres.each do |genre| %>
     <p><%=genre%></p>
   <%end%>
@@ -31,4 +34,3 @@
   </section>
 <%end%>
 <br>
-<%= button_to "Create Viewing Party!", "/users/#{@user.id}/movies/#{@movie.first.id}/viewing-party/new", method: :get %>

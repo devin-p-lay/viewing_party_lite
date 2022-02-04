@@ -1,4 +1,10 @@
 issues:
 
 - Heroku deployment successful but app is broken
-- (movies index) Button to 'Discover' uses post verb despite setting 'method: :get'  
+- (movies index) Button to 'Discover' uses post verb despite setting 'method: :get'
+
+
+refactor:
+
+- html (view)
+- 100% coverage w/ sad path testing

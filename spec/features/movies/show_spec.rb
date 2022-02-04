@@ -11,7 +11,7 @@ RSpec.describe 'Movie Show Page' do
 
       expect(page).to have_button("Create Viewing Party!")
       click_on "Create Viewing Party!"
-      expect(current_path).to eq("/users/#{@user.id}/movies/278/viewing-party/new")
+      expect(current_path).to eq("/users/#{@user.id}/movies/278/parties/new")
     end
   end
 
@@ -37,8 +37,8 @@ RSpec.describe 'Movie Show Page' do
     expect(page).to have_content("Shawshank Redemption")
     expect(page).to have_content("Details:")
     expect(page).to have_content("Vote Average: 8.7/10")
-    expect(page).to have_content("Runtime: 2hrs36min")
-    expect(page).to have_content("Genres:")
+    expect(page).to have_content("Runtime: 2 hr 22 min")
+    expect(page).to have_content("Genre(s):")
     expect(page).to have_content("Drama")
     expect(page).to have_content("Crime")
     expect(page).to have_content("Summary: #{summary}")

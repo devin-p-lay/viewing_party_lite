@@ -4,6 +4,10 @@ class Party < ApplicationRecord
 
   validates_presence_of :date,
                         :start_time,
-                        :movie_title,
-                        :movie_runtime
+                        :movie_id,
+                        :length
+
+  def whos_hosting?
+    User.find(host_id).name
+  end
 end
