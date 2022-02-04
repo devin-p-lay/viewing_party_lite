@@ -8,10 +8,35 @@
 <hr>
 <center><h4>Viewing Parties</h4></center>
 <% @user.parties.each do |party| %>
-<section id="party_time_<%=party.id%>">
-  <h4>Movie: <%=party.movie_id%> </h4>
-  <p>Runtime: <%=party.length%></p>
-  <p>Date: <%=party.date%> </p>
-  <p>Start time: <%=party.start_time%> </p>
-</section>
+  <% if party.host_id == @user.id %>
+    <h4>My Parties</h4>
+    <section id="party_time_host_<%=party.id%>">
+      <h4>Film: <%=link_to "#{find_film(party.movie_id).first.title}", "/users/#{@user.id}/movies/#{party.movie_id}" %> </h4>
+      <img src="https://image.tmdb.org/t/p/w200/<%=find_film(party.movie_id).first.poster%>?api_key=<%=ENV['movie_api_key']%>">
+      <p>Date: <%=party.date.strftime('%a, %B %d, %Y')%> </p>
+      <p>Time: <%=party.start_time.strftime("%I:%M%p")%> </p>
+      <p>Host: <b><%=@user.name %></b></p>
+      <h4>Who's Invited?</h4>
+      <%party.users.each do |user|%>
+        <p><%=user.name%></p>
+      <%end%>
+    </section>
+  <% else %>
+    <h4>Parties I've Been Invited To</h4>
+    <section id="party_time_guest_<%=party.id%>">
+    <h4>Film: <%=link_to "#{find_film(party.movie_id).first.title}", "/users/#{@user.id}/movies/#{party.movie_id}" %> </h4>
+    <img src="https://image.tmdb.org/t/p/w200/<%=find_film(party.movie_id).first.poster%>?api_key=<%=ENV['movie_api_key']%>">
+    <p>Date: <%=party.date.strftime('%a, %B %d, %Y')%> </p>
+    <p>Time: <%=party.start_time.strftime("%I:%M%p")%> </p>
+    <p>Host: <b><%=party.whos_hosting? %></b></p>
+    <h4>Who's Invited?</h4>
+    <%party.users.each do |user|%>
+      <% if user.name == @user.name %>
+        <p><b><%=user.name%></b></p>
+      <% else %>
+        <p><%=user.name%></p>
+      <%end%>
+    <%end%>
+    </section>
+  <%end%>
 <%end%>
