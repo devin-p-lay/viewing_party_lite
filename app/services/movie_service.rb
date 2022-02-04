@@ -18,6 +18,11 @@ class MovieService
     conjunction_junction(body_1[:results], body_2[:results])
   end
 
+  def find_film(id)
+    response = conn.get("/3/movie/#{id}?append_to_response=credits,reviews")
+    body = [parse_json(response)]
+  end
+
   private
     def conn
       Faraday.new(url: "https://api.themoviedb.org") do |faraday|
