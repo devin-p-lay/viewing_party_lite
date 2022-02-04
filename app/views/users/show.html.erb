@@ -6,11 +6,11 @@
 
 <center><h3>It's Party Time!</h3></center>
 <hr>
-<center><h4>Viewing Parties</h4>
+<center><h4>Viewing Parties</h4></center>
 <% @user.parties.each do |party| %>
 <section id="party_time_<%=party.id%>">
-  <h4>Movie: <%=party.movie_title%> </h4>
-  <p>Runtime: <%=party.movie_runtime%></p>
+  <h4>Movie: <%=party.movie_id%> </h4>
+  <p>Runtime: <%=party.length%></p>
   <p>Date: <%=party.date%> </p>
   <p>Start time: <%=party.start_time%> </p>
 </section>
