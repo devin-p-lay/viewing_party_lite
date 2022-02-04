@@ -21,7 +21,7 @@ describe 'register user' do
       fill_in :email, with: 'eric@faker.net'
       click_on 'Create New User'
       expect(current_path).to eq(register_path)
-      expect(page).to have_content('Unable to register, please try again.')
+      expect(page).to have_content('Email address is blank/already in use.')
     end
 
     it 'cannot add because form is filled out incorrectly' do
@@ -29,7 +29,7 @@ describe 'register user' do
       fill_in :email, with: ''
       click_on 'Create New User'
       expect(current_path).to eq(register_path)
-      expect(page).to have_content('Unable to register, please try again.')
+      expect(page).to have_content('Email address is blank/already in use.')
     end
   end
 end
