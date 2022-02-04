@@ -6,4 +6,8 @@ class Party < ApplicationRecord
                         :start_time,
                         :movie_id,
                         :length
+
+  def whos_hosting?
+    User.find(host_id).name
+  end
 end
