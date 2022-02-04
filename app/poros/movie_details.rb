@@ -23,10 +23,6 @@ class MovieDetails
     @poster = data[:poster_path]
   end
 
-  # def say_cheese(data)
-  #   @poster = data[:poster_path]
-  # end
-
   def formatted_time
     "#{@runtime / 60} hr #{@runtime % 60} min"
   end
