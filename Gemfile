@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -49,6 +49,7 @@ group :development do
 end
 
 group :test do
+  gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'rspec-rails'
   gem 'simplecov'
@@ -56,6 +57,7 @@ group :test do
   gem 'launchy'
   gem 'webmock'
   gem 'orderly'
+  gem 'faker'
   gem 'vcr'
 end
 
