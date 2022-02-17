@@ -3,14 +3,14 @@ require 'rails_helper'
 describe 'new party' do
   VCR.use_cassette('tmdb_movie_details_new') do
     before do
-      @perot = User.create(name: 'Jacques Perot', email: 'foundyouout@justtherighttime.net')
-      @white = User.create(name: 'Mrs. White', email: 'ididit@kitchenwithpipe.net')
-      @mustard = User.create(name: 'Colin L. Mustard', email: 'colonelspelledweird@loungewithrope.net')
-      @scarlett = User.create(name: 'Miss Scarlett', email: 'redletter@studywithknife.net')
+      @user1 = create :user
+      @user2 = create :user
+      @user3 = create :user
+      @user4 = create :user
 
       movie = MovieFacade.new
       @movie = movie.find_film(278)
-      visit "/users/#{@perot.id}/movies/#{@movie.first.id}/parties/new"
+      visit "/users/#{@user1.id}/movies/#{@movie.first.id}/parties/new"
     end
 
     describe 'display' do
@@ -21,7 +21,7 @@ describe 'new party' do
 
       it 'link to discover page', :vcr do
         click_on 'Discover Page'
-        expect(current_path).to eq("/users/#{@perot.id}/discover")
+        expect(current_path).to eq("/users/#{@user1.id}/discover")
       end
 
       describe 'viewing party details form', :vcr do
@@ -36,16 +36,16 @@ describe 'new party' do
           select('06 PM', from: '_start_time_4i')
           select('30', from: '_start_time_5i')
 
-          within "#user-#{@white.id}" do
+          within "#user-#{@user2.id}" do
             check
           end
 
-          within "#user-#{@mustard.id}" do
+          within "#user-#{@user3.id}" do
             check
           end
 
           click_on "Let's Go Party... Lite!"
-          expect(current_path).to eq(user_dashboard_path(@perot))
+          expect(current_path).to eq(user_dashboard_path(@user1))
         end
 
         it 'errors if the length is shorter than movie length' do
@@ -59,16 +59,16 @@ describe 'new party' do
           select('06 PM', from: '_start_time_4i')
           select('30', from: '_start_time_5i')
 
-          within "#user-#{@white.id}" do
+          within "#user-#{@user2.id}" do
             check
           end
 
-          within "#user-#{@mustard.id}" do
+          within "#user-#{@user3.id}" do
             check
           end
 
           click_on "Let's Go Party... Lite!"
-          expect(current_path).to eq("/users/#{@perot.id}/movies/#{@movie.first.id}/parties/new")
+          expect(current_path).to eq("/users/#{@user1.id}/movies/#{@movie.first.id}/parties/new")
           expect(page).to have_content("Error: Party duration cannot be shorter than movie runtime")
         end
       end

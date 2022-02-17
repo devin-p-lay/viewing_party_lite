@@ -2,40 +2,58 @@ require 'rails_helper'
 
 describe 'welcome page' do
   before do
-    @user1 = User.create(name:'Devin', email:'devin@faker.net')
-    @user2 = User.create(name:'Eric', email:'eric@faker.net')
+    @user1 = create :user
+    @user2 = create :user
     visit root_path
   end
 
   describe 'display' do
-    it 'title of application' do
-      expect(page).to have_content("Viewing Party")
+    it 'title' do
+      expect(page).to have_content 'Viewing Party'
     end
 
     it 'button to create a new user' do
-      click_button 'Create a New User'
-      expect(current_path).to eq('/register')
+      within '#create_user'
+        click_button 'Create a New User'
+        expect(current_path).to eq '/register'
+      end
     end
 
-    it 'list of existing users which link to the users dashboard' do
-      click_on "#{@user1.email}'s Dashboard"
-      expect(current_path).to eq(user_dashboard_path(@user1))
-
-      visit root_path
-
-      click_on "#{@user2.email}'s Dashboard"
-      expect(current_path).to eq(user_dashboard_path(@user2))
+    it 'link for user to login' do
+      click_on 'Log In'
+      expect(current_path).to eq '/login'
     end
 
     it 'header link to go back to landing page' do
       click_on 'Home'
       expect(current_path).to eq('/')
 
-      click_on "#{@user1.email}'s Dashboard"
-      expect(current_path).to eq(user_dashboard_path(@user1))
+      click_on "Create a New User"
+      expect(current_path).to eq('/register')
 
       click_on 'Home'
       expect(current_path).to eq('/')
-    end 
+    end
+
+  xcontext 'as a user' do
+    describe 'display' do
+      it 'list of existing users' do
+        within "#user-#{@user1.id}" do
+          expect(page).to have_content "#{@user1.email}"
+        end
+
+        within "#user-#{@user2.id}" do
+          expect(page).to have_content "#{@user2.email}"
+        end
+      end
+
+      it 'link to logout' do
+        expect(page).to have_content "#{@user1.email}"
+
+        click_link 'Log Out'
+        expect(current_path).to eq root_path
+        expect(page).to_not have_content "#{@user1.email}"
+      end
+    end
   end
 end
