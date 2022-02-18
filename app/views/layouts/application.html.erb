@@ -11,6 +11,9 @@
 
   <body>
     <%= link_to 'Home', '/' %>
+    <% if current_user.present? %>
+      <%= link_to 'Log Out', '/logout', method: :delete %>
+    <% end %>
     <center><h1>Viewing Party Lite</h1></center>
     <center><% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>

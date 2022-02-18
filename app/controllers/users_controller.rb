@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find_by(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def create
     user = user_params
     user[:email] = user[:email].downcase
-    new_user = User.new(user)
+    new_user = User.new(user_params)
     if new_user.save
       flash[:success] = 'Account Successfully Created!'
       session[:user_id] = new_user.id
-      redirect_to user_dashboard_path(new_user.id)
+      redirect_to user_path(new_user)
     else
       flash[:error] = 'Email address is blank/already in use.'
       redirect_to register_path
@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.permit(:email, :name)
+      params.permit(:email, :name, :password, :password_confirmation)
     end
 end

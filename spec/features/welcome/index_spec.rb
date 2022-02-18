@@ -35,24 +35,33 @@ describe 'welcome page' do
       expect(current_path).to eq('/')
     end
 
-  xcontext 'as a user' do
+  context 'as a user' do
     describe 'display' do
+      before do
+        click_on 'Log In'
+        fill_in :email, with: "#{@user1.email}"
+        fill_in :password, with: "#{@user1.password}"
+        click_on 'Log In'
+      end
+      
       it 'list of existing users' do
+        visit '/'
         within "#user-#{@user1.id}" do
-          expect(page).to have_content "#{@user1.email}"
+          expect(page).to have_content(@user1.email)
         end
 
         within "#user-#{@user2.id}" do
-          expect(page).to have_content "#{@user2.email}"
+          expect(page).to have_content @user2.email
         end
       end
 
       it 'link to logout' do
-        expect(page).to have_content "#{@user1.email}"
+        visit '/'
+        expect(page).to have_content @user1.email
 
         click_link 'Log Out'
         expect(current_path).to eq root_path
-        expect(page).to_not have_content "#{@user1.email}"
+        expect(page).to_not have_content @user1.email
       end
     end
   end

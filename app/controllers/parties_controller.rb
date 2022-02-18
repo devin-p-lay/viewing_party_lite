@@ -18,7 +18,7 @@ class PartiesController < ApplicationController
         invitee = User.find(id.to_i)
         party.users << invitee
       end
-      redirect_to "/users/#{host.id}/dashboard"
+      redirect_to "/users/#{host.id}"
     else
       redirect_to "/users/#{params[:user_id]}/movies/#{params[:movie_id]}/parties/new"
       flash[:alert] = "Error: Party duration cannot be shorter than movie runtime"

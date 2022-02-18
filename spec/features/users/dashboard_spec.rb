@@ -9,15 +9,15 @@ RSpec.describe 'users dashboard' do
   end
 
   it 'displays the users name at the top of the page' do
-    visit user_dashboard_path(@user1)
+    visit user_path(@user1)
     expect(page).to have_content "#{@user1.name}'s Dashboard"
 
-    visit user_dashboard_path(@user2)
+    visit user_path(@user2)
     expect(page).to have_content "#{@user2.name}'s Dashboard"
   end
 
   it 'displays a button that links to Discover Movies' do
-    visit user_dashboard_path(@user1)
+    visit user_path(@user1)
 
     within("#discover_movies") do
       expect(page).to have_button("Discover Movies")
@@ -25,7 +25,7 @@ RSpec.describe 'users dashboard' do
       expect(current_path).to eq("/users/#{@user1.id}/discover")
     end
 
-    visit user_dashboard_path(@user2)
+    visit user_path(@user2)
     within("#discover_movies") do
       expect(page).to have_button("Discover Movies")
       click_on "Discover Movies"
@@ -47,7 +47,7 @@ RSpec.describe 'users dashboard' do
             Attendee.create!(user:@user3, party: party2)
             Attendee.create!(user:@user1, party: party2)
 
-            visit user_dashboard_path(@user1)
+            visit user_path(@user1)
             #one created party and one invite
             expect(page).to have_content("It's Party Time!")
             expect(page).to have_content("My Parties")
@@ -73,7 +73,7 @@ RSpec.describe 'users dashboard' do
               expect(page).to have_content("#{@user3.name}")
             end
 
-            visit user_dashboard_path(@user2)
+            visit user_path(@user2)
             #No created parties, one invite
             expect(page).to have_content("It's Party Time!")
             expect(page).to have_content("Parties I've Been Invited To")
@@ -90,7 +90,7 @@ RSpec.describe 'users dashboard' do
             expect(page).to_not have_content("My Parties")
 
 
-            visit user_dashboard_path(@user3)
+            visit user_path(@user3)
             #One created party, no invites
             expect(page).to have_content("It's Party Time!")
             expect(page).to have_content("My Parties")
@@ -116,7 +116,7 @@ RSpec.describe 'users dashboard' do
     party1 = Party.create!(host_id: @user1.id, movie_id: 278, length: 142, start_time: "19:00:00", date:  Date.new(2022,04,04))
     Attendee.create!(user: @user1, party: party1)
 
-    visit user_dashboard_path(@user1)
+    visit user_path(@user1)
 
     within("#party_time_host_#{party1.id}") do
       expect(page).to have_link("The Shawshank Redemption")

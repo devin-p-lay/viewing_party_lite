@@ -45,7 +45,7 @@ describe 'new party' do
           end
 
           click_on "Let's Go Party... Lite!"
-          expect(current_path).to eq(user_dashboard_path(@user1))
+          expect(current_path).to eq(user_path(@user1))
         end
 
         it 'errors if the length is shorter than movie length' do

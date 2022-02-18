@@ -1,6 +1,6 @@
 <center><h3>Register a New User</h3></center>
 
-<center><%= form_with url: "/users/#{@user.id}", method: :post, local: true do |f| %>
+<center><%= form_with url: "/users", method: :post, local: true do |f| %>
   <p><%= f.label 'Name:' %>
   <%= f.text_field :name %></p>
 
